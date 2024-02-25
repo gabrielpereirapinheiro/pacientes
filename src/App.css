@@ -1,16 +1,87 @@
 .App {
   text-align: center;
 }
+.footer{
+  position: fixed;
+    bottom: 70px;
+    width: 100%;
+}
+
+#title{
+  margin-bottom: 40px;
+}
+
+#back{
+  position: absolute;
+  left: 10px;
+  width: 120px;
+}
+
+#mytab{
+  justify-content: center
+}
+
+#cancel{
+  position: fixed;
+    bottom: 90px;
+    align-items: center;
+    width: 94%;
+    left: 0;
+    margin: 3%;
+}
+
+#next{
+  position: absolute;
+  width: 120px;
+  right: 10px;
+}
+.tablist2{
+  justify-content:center
+}
+.Steps {
+  min-height: 100vh;
+  text-align: center;
+}
+
+.teste{
+  border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+    height: 50vh;
+}
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+#textcopy{
+  height: 40vh;
+}
+
+#myinput {
+  accent-color:#319795
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    margin: 10px;
   }
+
+    .logo-animation {
+      animation: createBox infinite 1s linear;
+      margin: 10px;
+    }
+
+  img {
+      transition: -webkit-transform 0.25s ease;
+      transition: transform 0.25s ease;
+    }
+  
+    img:active {
+      -webkit-transform: scale(2);
+      transform: scale(2);
+    }
 }
 
 .App-header {
@@ -34,5 +105,16 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+@keyframes createBox {
+  from {
+    transform: scale(0.9);
+  }
+
+  to {
+    transform: scale(10);
   }
 }

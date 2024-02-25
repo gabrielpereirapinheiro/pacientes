@@ -1,0 +1,382 @@
+const steps = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+  23, 24, 25, 26, 27,
+];
+
+const screens = [
+  {
+    title: "Identificação",
+    id: 1,
+    placeholder: "Digite o nome do paciente",
+    type: "input",
+    text: "O paciente <replace>",
+  },
+  {
+    title: "Gênero",
+    id: 2,
+    type: "options",
+    options: [
+      { label: "Masculino", value: "Femenino" },
+      { label: "Feminino", value: "Feminino" },
+    ],
+    text: "do sexo <replace> ",
+  },
+  {
+    title: "Estado mental",
+    id: 3,
+    type: "options",
+    options: [
+      { label: "Vigil", value: "Vigil" },
+      { label: "Obnubilado", value: "Obnubilado" },
+      { label: "Sonolento", value: "Sonolento" },
+      { label: "Torporoso", value: "Torporoso" },
+      { label: "Comatoso", value: "Comatoso" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: "estava com estado mental <replace>",
+  },
+
+  {
+    title: "Sedação",
+    id: 4,
+    type: "options",
+    options: [
+      { label: "Sem sedoanalgesia", value: "Sem sedoanalgesia" },
+      { label: "Com sedoanalgesia", value: "Com sedoanalgesia" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: "e sedação <replace>",
+  },
+  {
+    title: "Escala de sedação",
+    id: 5,
+    type: "options",
+    options: [
+      { label: "RASS +4", value: "RASS +4" },
+      { label: "RASS +3", value: "RASS +3" },
+      { label: "RASS +2", value: "RASS +2" },
+      { label: "RASS +1", value: "RASS +1" },
+      { label: "RASS 0", value: "RASS 0" },
+      { label: "RASS -1", value: "RASS -1" },
+      { label: "RASS -2", value: "RASS -2" },
+      { label: "RASS -3", value: "RASS -3" },
+      { label: "RASS -4", value: "RASS -4" },
+      { label: "RASS -5", value: "RASS -5" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " sendo a sedação <replace>",
+  },
+  {
+    title: "Interação",
+    id: 6,
+    type: "options",
+    options: [
+      { label: "Interativo", value: "Interativo" },
+      { label: "Não interativo", value: "Não interativo" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: "o paciente esta <replace>",
+  },
+  {
+    title: "Ventilatório",
+    id: 7,
+    type: "options",
+    options: [
+      {
+        label: "Ventilando espontaneamente ",
+        value: "Ventilando espontaneamente ",
+      },
+      { label: "ventilação mecânica", value: "ventilação mecânica" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Oxigenoterapia",
+    id: 8,
+    type: "options",
+    options: [
+      { label: "Em ar ambiente", value: "Em ar ambiente" },
+      {
+        label: " Com oxigenoterapia sob cateter nasal",
+        value: " Com oxigenoterapia sob cateter nasal",
+      },
+      {
+        label: "Com oxigenoterapia sob máscara de Ventur",
+        value: "Com oxigenoterapia sob máscara de Ventur",
+      },
+      {
+        label: "Com oxigenoterapia sob máscara não reinalante",
+        value: "Com oxigenoterapia sob máscara não reinalante",
+      },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Padrão ventilatório",
+    id: 9,
+    type: "options",
+    options: [
+      {
+        label: "Padrão ventilatório adequado",
+        value: "Padrão ventilatório adequado",
+      },
+      { label: "Taquipneico", value: "Taquipneico" },
+      { label: "Bem acoplado", value: "Bem acoplado" },
+      { label: "Mal acoplado", value: "Mal acoplado" },
+      { label: "Tolerando terapia", value: "Tolerando terapia" },
+      { label: "Não tolerando terapia", value: "Não tolerando terapia" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Saturação",
+    id: 10,
+    type: "options",
+    options: [
+      { label: "Saturação adequada", value: "Saturação adequada" },
+      { label: "Saturação limítrofe", value: "Saturação limítrofe" },
+      { label: "Dessaturação leve", value: "Dessaturação leve" },
+      { label: "Dessaturação moderada", value: "Dessaturação moderada" },
+      { label: "Dessaturando gravemente", value: "Dessaturando gravemente" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Hemodinâmica ",
+    id: 11,
+    type: "options",
+    options: [
+      { label: "Estável, sem DVAs", value: "Estável, sem DVAs" },
+      { label: "Compensada com DVAs", value: "Compensada com DVAs" },
+      { label: "Instável", value: "Instável" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Pressão",
+    id: 12,
+    type: "options",
+    options: [
+      { label: "Hipertenso", value: "Hipertenso" },
+      { label: "Tendendo à hipotensão", value: "Tendendo à hipotensão" },
+      { label: "Tendendo à hipertensão", value: "Tendendo à hipertensão" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Temperatura",
+    id: 13,
+    type: "options",
+    options: [
+      { label: "Febril", value: "Febril" },
+      { label: "Afebril", value: "Afebril" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Curva térmica",
+    id: 14,
+    type: "options",
+    options: [
+      { label: "Pico único", value: "Pico único" },
+      { label: "Vários picos", value: "Vários picos" },
+      {
+        label: "Por praticamente todo o período",
+        value: "Por praticamente todo o período",
+      },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Antibioticoterapia",
+    id: 15,
+    type: "options",
+    options: [
+      {
+        label: "Em uso de antibioticoterapia",
+        value: "Em uso de antibioticoterapia",
+      },
+      { label: "Sem antibioticoterapia", value: "Sem antibioticoterapia" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Nutrição ",
+    id: 16,
+    type: "options",
+    options: [
+      { label: "Dieta oral", value: "Dieta oral" },
+      { label: "Dieta enteral", value: "Dieta enteral" },
+      { label: "Dieta parenteral", value: "Dieta parenteral" },
+      { label: "Dieta oral + enteral", value: "Dieta oral + enteral" },
+      { label: "Dieta oral + parenteral", value: "Dieta oral + parenteral" },
+      {
+        label: "Dieta enteral + parenteral",
+        value: "Dieta enteral + parenteral",
+      },
+      { label: "Dieta tripla via", value: "Dieta tripla via" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Aceitação",
+    id: 17,
+    type: "options",
+    options: [
+      { label: "Com boa tolerância", value: "Com boa tolerância" },
+      { label: "Com média tolerância", value: "Com média tolerância" },
+      { label: "Com má tolerância", value: "Com má tolerância" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Curva glicêmica",
+    id: 18,
+    type: "options",
+    options: [
+      { label: "Glicemias adequadas", value: "Glicemias adequadas" },
+      { label: "Glicemias com escapes", value: "Glicemias com escapes" },
+      {
+        label: "Ocorrência de hipoglicemia",
+        value: "Ocorrência de hipoglicemia",
+      },
+      {
+        label: "Ocorrência de várias hipoglicemias",
+        value: "Ocorrência de várias hipoglicemias",
+      },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Eliminações",
+    id: 19,
+    type: "options",
+    options: [
+      {
+        label: "Eliminações intestinais presentes",
+        value: "Eliminações intestinais presentes",
+      },
+      {
+        label: "Eliminações intestinais ausentes",
+        value: "Eliminações intestinais ausentes",
+      },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Tempo",
+    id: 20,
+    type: "options",
+    options: [
+      { label: "Há um dia", value: "Há um dia" },
+      { label: "Há dois dias", value: "Há dois dias" },
+      { label: "Há três dias", value: "Há três dias" },
+      { label: "Há vários dias", value: "Há vários dias" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Diurese",
+    id: 21,
+    type: "options",
+    options: [
+      {
+        label: "Em volume adequado",
+        value: "Em volume adequado",
+      },
+      { label: "Em volume inadequado", value: "Em volume inadequado" },
+      { label: "Ausente", value: "Ausente" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Terapia renal substitutiva",
+    id: 22,
+    type: "options",
+    options: [
+      { label: "UF HD", value: "UF HD" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Balanço hídrico",
+    id: 23,
+    type: "options",
+    options: [
+      {
+        label: "Positivo",
+        value: "Positivo",
+      },
+      { label: "Negativo", value: "Negativo" },
+      { label: "Neutro", value: "Neutro" },
+      { label: "Muito positivo", value: "Muito positivo" },
+      { label: "Muito negativo", value: "Muito negativo" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Extremidades",
+    id: 24,
+    type: "options",
+    options: [
+      { label: "Bem perfundidas", value: "Bem perfundidas" },
+      { label: "Mal perfundidas", value: "Mal perfundidas" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Edema",
+    id: 25,
+    type: "options",
+    options: [
+      { label: "com edema", value: "com edema" },
+      { label: "sem edema", value: "sem edema" },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Panturrilhas",
+    id: 26,
+    type: "options",
+    options: [
+      { label: "Livres", value: "Livres" },
+      {
+        label: "Empastamento em perna direita",
+        value: "Empastamento em perna direita",
+      },
+      {
+        label: "Empastamento em perna esquerda",
+        value: "Empastamento em perna esquerda",
+      },
+      { label: "Pular esta opção", value: "Pular esta opção" },
+    ],
+    text: " <replace>",
+  },
+  {
+    title: "Texto final",
+    id: 27,
+    type: "generator",
+  },
+];
+
+export { steps, screens };
