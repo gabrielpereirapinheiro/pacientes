@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/pacientes/static/css/main.20536762.css",
-    "main.js": "/pacientes/static/js/main.ac8bef74.js",
+    "main.js": "/pacientes/static/js/main.39d735d1.js",
     "static/js/453.c998f709.chunk.js": "/pacientes/static/js/453.c998f709.chunk.js",
     "static/media/doctor.png": "/pacientes/static/media/doctor.47004e05142df94da262.png",
     "index.html": "/pacientes/index.html",
     "main.20536762.css.map": "/pacientes/static/css/main.20536762.css.map",
-    "main.ac8bef74.js.map": "/pacientes/static/js/main.ac8bef74.js.map",
+    "main.39d735d1.js.map": "/pacientes/static/js/main.39d735d1.js.map",
     "453.c998f709.chunk.js.map": "/pacientes/static/js/453.c998f709.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.20536762.css",
-    "static/js/main.ac8bef74.js"
+    "static/js/main.39d735d1.js"
   ]
 }
